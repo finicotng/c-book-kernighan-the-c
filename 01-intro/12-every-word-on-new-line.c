@@ -1,14 +1,19 @@
 #include <stdio.h>
 
+#define IN  1
+#define OUT 0
+
 int main() {
-	
-	int c;
+    
+    int c, state = OUT;
 
-	while ((c = getchar()) != EOF) {
-		putchar(c);
-
-		if (c == ' ') {
-			putchar('\n');
-		}
-	}
+    while ((c = getchar()) != EOF) {
+        if (c != ' ') {
+            state = IN;
+            putchar(c);
+        } else if (c == ' ' && state == IN) {
+            state = OUT;
+            putchar('\n');
+        }
+    }
 }
